@@ -33,9 +33,7 @@ public class Product implements Serializable {
     @Column(name = "PRICE", nullable = false)
     private BigDecimal price;
 
-    @Deprecated
-    public Product(){
-    }
+    public Product(){}
     
     public Product(@NonNull String name, @NonNull String description, @NonNull BigDecimal price){
         this.name=name;
@@ -43,7 +41,18 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -56,23 +65,12 @@ public class Product implements Serializable {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getDescription() {
 		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public BigDecimal getPrice() {
 		return price;
 	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+	
 }

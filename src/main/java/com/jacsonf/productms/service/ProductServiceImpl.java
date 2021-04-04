@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product one(String id) {
-         return productRepository.findById(id).orElseThrow(() -> new NoResultException(String.format("Produto de código não encontrado", id)));
+         return productRepository.findById(id).orElseThrow(() -> new NoResultException("product code "+id+" not found"));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void delete(String id) {
     	if (!productRepository.existsById(id)) {
-            throw new NoResultException(String.format("Produto de código %d não encontrado", id));
+            throw new NoResultException("product code "+id+" not found");
         }
         productRepository.deleteById(id);
     }

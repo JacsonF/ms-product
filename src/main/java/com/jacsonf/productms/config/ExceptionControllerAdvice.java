@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.jacsonf.productms.controller.dto.response.Error;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 @ControllerAdvice
 public class ExceptionControllerAdvice {
 	private static final String VALIDATION_ERROR = "validation error";
 
+	@Hidden
     @ResponseBody
     @ExceptionHandler(NoResultException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -24,14 +27,6 @@ public class ExceptionControllerAdvice {
         return new Error(HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
     
-//
-//    @ResponseBody
-//    @ExceptionHandler(HttpMessageNotReadableException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    public Error methodArgument(HttpMessageNotReadableException e) {
-//        return new Error(HttpStatus.BAD_REQUEST.value(), "Parametro invalido");
-//    }
-
 	@ResponseBody
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
