@@ -29,6 +29,9 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 	implementation "org.springdoc:springdoc-openapi-ui:1.4.8"
 	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
+	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 
 test {

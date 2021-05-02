@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.jacsonf.productms.controller.mapper.ProductMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,7 @@ public class ProductControllerImpl implements ProductController{
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Product save(@Valid @RequestBody Input dto) {
-		Product product = new Product(dto.getName(), dto.getDescription(), dto.getPrice());
-		return productService.save(product);
+		return productService.save(ProductMapper.INSTANCE.toProduct(dto));
 	}
 
 	@Override
